@@ -1,6 +1,12 @@
 import axios from 'axios';
 import onChange from 'on-change';
 
+```
+const validateName = (name) => (name.trim().length ? [] : ['name cannot be empty']);
+const validateEmail = (email) => (/\w+@\w+/.test(email) ? [] : ['invalid email']);
+const validateField = (fieldname, data) => (fieldname === 'name' ? validateName(data) : validateEmail(data));
+```
+
 const render = (state, nameEl, emailEl, btn) => {
   if (state.nameState === 'valid') {
     nameEl.classList.remove('is-invalid');
